@@ -52,3 +52,26 @@ CodeCoverage/
 *.VisualState.xml
 TestResult.xml
 nunit-*.xml
+
+# ====================
+# Extra for macOS & IDEs
+# ====================
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+
+# VS Code
+.vscode/
+*.code-workspace
+.history/
+
+# ====================
+# Config & Secrets
+# ====================
+secrets.json
+appsettings.*.local.json
+appsettings.Production.json

@@ -63,6 +63,11 @@ app.UseAuthorization();
 
 app.MapGet("/", () => "API up");
 
+app.MapGet("/datetime", () =>
+{
+    return DateTime.UtcNow;
+});
+
 // username control
 app.MapGet("/auth/check-username", async (string username, AppDbContext db) =>
 {
@@ -109,6 +114,15 @@ app.MapPost("/auth/login", async (LoginRequest req, AppDbContext db, IConfigurat
     return Results.Ok(new AuthResponse(token, user.Username, user.Email));
 });
 
+//token login
+app.MapGet("/users/me", (ClaimsPrincipal user) =>
+{
+    var username = user.Identity?.Name;
+    var email = user.FindFirst(ClaimTypes.Email)?.Value;
+    return Results.Ok(new { username, email });
+})
+.RequireAuthorization();
+
 app.Run();
 
 static string CreateJwt(User user, IConfiguration cfg)
@@ -122,6 +136,7 @@ static string CreateJwt(User user, IConfiguration cfg)
     {
         new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
         new Claim(JwtRegisteredClaimNames.UniqueName, user.Username),
+        new Claim(ClaimTypes.Name, user.Username),
         new Claim(JwtRegisteredClaimNames.Email, user.Email)
     };
 

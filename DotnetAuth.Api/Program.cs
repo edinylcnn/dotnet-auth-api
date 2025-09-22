@@ -7,8 +7,13 @@ using DotnetAuth.Api.Contracts;
 using DotnetAuth.Api.Data;
 using DotnetAuth.Api.Models;
 using DotnetAuth.Api.Endpoints;
+using DotnetAuth.Api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddMemoryCache();
+builder.Services.AddHttpClient();
+builder.Services.AddSingleton<UpaTokenValidator>();
 
 // EF Core + MySQL
 builder.Services.AddDbContext<AppDbContext>(opt =>

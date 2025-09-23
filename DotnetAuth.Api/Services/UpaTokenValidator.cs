@@ -34,7 +34,6 @@ public class UpaTokenValidator
             ValidateIssuer = true,
             ValidIssuer = issuer,
             ValidateAudience = validateAudience,
-            // UPA tokenda audience projenin ayrıntılarına bağlı olabilir; başlangıçta kapatıyoruz.
             ValidateLifetime = true,
             RequireSignedTokens = true,
             IssuerSigningKeys = keys
@@ -53,7 +52,7 @@ public class UpaTokenValidator
 
     private async Task<IEnumerable<SecurityKey>> GetSigningKeysAsync(string url)
     {
-        if (_cache.TryGetValue(url, out IEnumerable<SecurityKey> cached))
+        if (_cache.TryGetValue(url, out IEnumerable<SecurityKey>? cached) && cached != null)
             return cached;
 
         var http = _httpFactory.CreateClient();

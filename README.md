@@ -2,19 +2,19 @@
 
 A minimal, production-minded **JWT authentication API** built with **.NET 9 Minimal API + EF Core 9 + MySQL + BCrypt + Swagger**.
 
-Designed for a Unity client (separate repo), but generic enough for any client.
+Designed for a [Unity client](https://github.com/edinylcnn/unity-auth-client), but generic enough for any client.
 
 ---
 
 ## ✨ Features
 
-- Sign up & sign in: `POST /auth/signup`, `POST /auth/login`
-- Username & email availability: `GET /auth/check-username`, `GET /auth/check-email`
-- JWT issuance on login and a protected endpoint: `GET /users/me`
-- Passwords stored as **BCrypt salted hashes** (never plaintext)
-- Swagger UI for quick testing
-- CORS enabled (open in dev; restrict in prod)
-- Clean structure with **feature-based endpoint modules**
+- 🔐 Sign up & sign in: `POST /auth/signup`, `POST /auth/login`
+- 🆔 Username & email availability: `GET /auth/check-username`, `GET /auth/check-email`
+- 🎫 JWT issuance on login and a protected endpoint: `GET /users/me`
+- 🔑 Passwords stored as **BCrypt salted hashes** (never plaintext)
+- 📖 Swagger UI for quick testing
+- 🌐 CORS enabled (open in dev; restrict in prod)
+- 🗂️ Clean structure with **feature-based endpoint modules**
 
 ---
 
